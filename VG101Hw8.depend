@@ -1,0 +1,41 @@
+# depslib dependency file v1.0
+1437218577 source:f:\coding\umji-vg101-project_for\main.cpp
+	<windows.h>
+	<cstdio>
+	<cstdlib>
+	<iostream>
+	"headers/hw8.h"
+
+1437216998 f:\coding\umji-vg101-project_for\headers\hw8.h
+	<cstdlib>
+	<windows.h>
+	"form.h"
+	"screen.h"
+
+1437218572 f:\coding\umji-vg101-project_for\headers\screen.h
+	<windows.h>
+	<set>
+	"screen.h"
+	"form.h"
+
+1437218556 source:f:\coding\umji-vg101-project_for\form.cpp
+	<windows.h>
+	"headers/hw8.h"
+	<cstring>
+	<iostream>
+
+1437219905 f:\coding\umji-vg101-project_for\headers\form.h
+	"hw8.h"
+	<vector>
+
+1437219458 source:f:\coding\umji-vg101-project_for\screen.cpp
+	"headers/hw8.h"
+	<cstring>
+	<iostream>
+
+1437209061 source:f:\coding\umji-vg101-project_for\main_old.cpp
+	<cstdio>
+	<cstdlib>
+	<iostream>
+	"headers/hw8.h"
+

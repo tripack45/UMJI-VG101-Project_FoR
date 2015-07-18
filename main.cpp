@@ -1,9 +1,19 @@
+#include <windows.h>
+#include <cstdio>
+#include <cstdlib>
 #include <iostream>
+#include "headers/hw8.h"
 
-using namespace std;
-
-int main()
+int main(void)
 {
-    cout << "Hello world!" << endl;
-    return 0;
+    Screen screen;
+    cForm form(screen.getScreenSize(),{0,0});
+    screen.setForm(&form);
+    screen.setCursorVisibility(false);
+    while(1){
+        screen.Update();
+        screen.Draw();
+    }
+	return 0;
 }
+
