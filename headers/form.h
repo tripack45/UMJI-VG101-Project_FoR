@@ -14,6 +14,7 @@ public:
     void movePosition(COORD vec);
     ~cControl();
     virtual void OnDoubleClick(COORD){};
+    virtual void OnClick(COORD){};
 protected:
     COORD* controlpos;
     CHAR_INFO* cbuffer;
@@ -25,6 +26,7 @@ class cForm{
 public:
     cForm(COORD fsize,COORD fpos);
     void OnDoubleClick(COORD);
+    void OnClick(COORD);
     void AddControl(cControl*);
     void Draw();
     CHAR_INFO* getBuffer();

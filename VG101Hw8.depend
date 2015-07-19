@@ -26,7 +26,7 @@
 	<cstring>
 	<iostream>
 
-1437292633 f:\coding\umji-vg101-project_for\headers\form.h
+1437295448 f:\coding\umji-vg101-project_for\headers\form.h
 	"hw8.h"
 	<vector>
 
@@ -53,13 +53,13 @@
 	<cstring>
 	<iostream>
 
-1437243965 source:f:\coding\umji-vg101-project_for\src\form.cpp
+1437295377 source:f:\coding\umji-vg101-project_for\src\form.cpp
 	<windows.h>
 	"../headers/hw8.h"
 	<cstring>
 	<iostream>
 
-1437293980 source:f:\coding\umji-vg101-project_for\src\main.cpp
+1437294059 source:f:\coding\umji-vg101-project_for\src\main.cpp
 	<windows.h>
 	<cstdio>
 	<cstdlib>
@@ -74,19 +74,19 @@
 	<iostream>
 	"headers/hw8.h"
 
-1437293595 f:\coding\umji-vg101-project_for\headers\uicontrols.h
+1437295448 f:\coding\umji-vg101-project_for\headers\uicontrols.h
 	"form.h"
 	<string>
 
-1437223740 source:f:\coding\umji-vg101-project_for\src\screen.cpp
+1437295780 source:f:\coding\umji-vg101-project_for\src\screen.cpp
 	"../headers/hw8.h"
 	<cstring>
 	<iostream>
 
-1437293619 source:f:\coding\umji-vg101-project_for\src\ui_controls.cpp
+1437295377 source:f:\coding\umji-vg101-project_for\src\ui_controls.cpp
 	"../headers/hw8.h"
 
-1437292753 source:f:\coding\umji-vg101-project_for\src\ui_properties.cpp
+1437294059 source:f:\coding\umji-vg101-project_for\src\ui_properties.cpp
 	"../headers/hw8.h"
 
 1437292753 f:\coding\umji-vg101-project_for\headers\uiproperty.h

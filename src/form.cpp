@@ -19,6 +19,15 @@ void cForm::OnDoubleClick(COORD mpos){
     return;
 }
 
+void cForm::OnClick(COORD mpos){
+    //system("PAUSE");
+    int index=getRecieverIndex(mpos);
+    if(index!=-1)
+        controls[index]->OnClick(mpos);
+    //*(fbuffer+ 1 * FormSize.X + 1)={'A',7};
+    return;
+}
+
 void cForm::Draw(){
     COORD fsize=FormSize;
     memset(fbuffer,0,fsize.X * fsize.Y * sizeof(CHAR_INFO));

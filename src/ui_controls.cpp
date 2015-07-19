@@ -2,26 +2,14 @@
 //===============BUTTON======================
 const int Button::TxtMaxLength=5;
 const int Button::TxtMaxLine=1;
-/*
-Button::Button(COORD* bPOS)
-    :cControl(bPOS){
-    cbuffer=new CHAR_INFO[(2+TxtMaxLine)*(TxtMaxLength+2)];
-    memset(cbuffer,0,(TxtMaxLength+2) * (2+TxtMaxLine) * sizeof(CHAR_INFO));
-    dblclickHandler=0;
-}
-
-Button::Button(COORD* bPOS,std::string& text_)
-    :cControl(bPOS){
-    Button(bPOS);
-    ChangeText(text_);
-}*/
 
 Button::Button(COORD* bPOS,std::string* text_,void (*foo)(COORD))
     :cControl(bPOS){
     cbuffer=new CHAR_INFO[(2+TxtMaxLine)*(TxtMaxLength+2)];
     memset(cbuffer,0,(TxtMaxLength+2) * (2+TxtMaxLine) * sizeof(CHAR_INFO));
     ChangeText(text_);
-    dblclickHandler=foo;
+    clickHandler=foo;
+    dblclickHandler=0;
 }
 
 COORD Button::getDrawSize(){
@@ -59,7 +47,16 @@ void Button::OnDoubleClick(COORD mpos){
         dblclickHandler(mpos);
 };
 
+void Button::OnClick(COORD mpos){
+    if(clickHandler!=0)
+        clickHandler(mpos);
+};
+
 void Button::setDblClkHandler(void (*foo)(COORD)){
     dblclickHandler=foo;
+}
+
+void Button::setClkHandler(void (*foo)(COORD)){
+    clickHandler=foo;
 }
 //=====================BUTTON END=========================

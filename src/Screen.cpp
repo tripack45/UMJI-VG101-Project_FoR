@@ -51,12 +51,16 @@ void Screen::DispatchMouseInput(){
     ReadConsoleInput(hin, &mouseRec, 1, &res);
     if (mouseRec.EventType == MOUSE_EVENT){
         if (mouseRec.Event.MouseEvent.dwButtonState==FROM_LEFT_1ST_BUTTON_PRESSED){
+            COORD crPos=mouseRec.Event.MouseEvent.dwMousePosition;
+            crPos.X=crPos.X-(*pform).FormPos.X;
+            crPos.Y=crPos.Y-(*pform).FormPos.Y;
             if (mouseRec.Event.MouseEvent.dwEventFlags == DOUBLE_CLICK){
-                COORD crPos=mouseRec.Event.MouseEvent.dwMousePosition;
-                crPos.X=crPos.X-(*pform).FormPos.X;
-                crPos.Y=crPos.Y-(*pform).FormPos.Y;
                 (*pform).OnDoubleClick(crPos);
+                FlushConsoleInputBuffer(hin);
+                return;
             }
+            (*pform).OnClick(crPos);
+            FlushConsoleInputBuffer(hin);
         }
         /*
         if(mouseRec.Event.MouseEvent.dwButtonState==RIGHTMOST_BUTTON_PRESSED){
