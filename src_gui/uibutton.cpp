@@ -12,26 +12,16 @@ Button::Button(COORD* bPOS,std::string* text_,void (*foo)(COORD))
     dblclickHandler=0;
 }
 
-COORD Button::getDrawSize(){
+COORD Button::getControlSize(){
                 //====X========,=======Y=====
     COORD bSize={TxtMaxLength+2,2+TxtMaxLine};
     return bSize;
 }
 
 void Button::Draw(){
-    COORD dwsize=getDrawSize();
+    COORD dwsize=getControlSize();
     DrawRectangle({0,0},{6,2});
-    CHAR_INFO blank={' ',7};
-    for(int i=0;i<TxtMaxLength;i++){
-        *(cbuffer+dwsize.X+1+i)=blank;
-    }//initialize all text spaces;
-    for(int i=0;i<TxtMaxLength;i++)
-        if((*text)[i]=='\0'){
-           return;
-        }else{
-           CHAR_INFO tCHAR={(*text)[i],7};
-            *(cbuffer+dwsize.X+1+i)=tCHAR;
-        }
+    PutString({1,1},text,5);
 }
 
 Button::~Button(){

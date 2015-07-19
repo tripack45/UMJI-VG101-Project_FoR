@@ -20,16 +20,20 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="headers/button.h" />
+		<Unit filename="headers/button_simple.h" />
 		<Unit filename="headers/form.h" />
 		<Unit filename="headers/hw8.h" />
+		<Unit filename="headers/label.h" />
 		<Unit filename="headers/screen.h" />
-		<Unit filename="headers/uicontrols.h" />
-		<Unit filename="src/Screen.cpp" />
-		<Unit filename="src/control.cpp" />
-		<Unit filename="src/form.cpp" />
-		<Unit filename="src/main.cpp" />
-		<Unit filename="src/main_old.cpp" />
-		<Unit filename="src/ui_controls.cpp" />
+		<Unit filename="headers/uiproperty.h" />
+		<Unit filename="src_gui/Screen.cpp" />
+		<Unit filename="src_gui/control.cpp" />
+		<Unit filename="src_gui/form_control.cpp" />
+		<Unit filename="src_gui/label.cpp" />
+		<Unit filename="src_gui/main.cpp" />
+		<Unit filename="src_gui/ui_properties.cpp" />
+		<Unit filename="src_gui/uibutton.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

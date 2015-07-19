@@ -10,6 +10,7 @@ Screen::Screen(){
 	GetConsoleCursorInfo(hin,&cursorinfo);
 	sbuffer=new CHAR_INFO[bInfo.dwSize.X*bInfo.dwSize.Y];
 	memset(sbuffer,0,bInfo.dwSize.X * bInfo.dwSize.Y);
+	UI::screen=this;
 }
 
 void Screen::setCursorPos(short x,short y){
@@ -25,6 +26,7 @@ void Screen::setCursorVisibility(bool isvisible){
 
 void Screen::setForm(cForm* pform_){
     pform=pform_;
+    UI::current_form=pform_;
 }
 
 COORD Screen::getScreenSize(){
@@ -59,8 +61,9 @@ void Screen::DispatchMouseInput(){
                 FlushConsoleInputBuffer(hin);
                 return;
             }
-            (*pform).OnClick(crPos);
-            FlushConsoleInputBuffer(hin);
+            //if(mouseRec.Event.MouseEvent.dwEventFlags != )
+            if(mouseRec.Event.MouseEvent.dwEventFlags != MOUSE_MOVED)(*pform).OnClick(crPos);
+            //FlushConsoleInputBuffer(hin);
         }
         /*
         if(mouseRec.Event.MouseEvent.dwButtonState==RIGHTMOST_BUTTON_PRESSED){

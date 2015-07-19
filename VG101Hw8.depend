@@ -6,13 +6,14 @@
 	<iostream>
 	"headers/hw8.h"
 
-1437292753 f:\coding\umji-vg101-project_for\headers\hw8.h
+1437329828 f:\coding\umji-vg101-project_for\headers\hw8.h
 	<cstdlib>
 	<windows.h>
 	"form.h"
 	"screen.h"
-	"uicontrols.h"
 	"uiproperty.h"
+	"button.h"
+	"label.h"
 
 1437222687 f:\coding\umji-vg101-project_for\headers\screen.h
 	<windows.h>
@@ -26,9 +27,10 @@
 	<cstring>
 	<iostream>
 
-1437295448 f:\coding\umji-vg101-project_for\headers\form.h
+1437331392 f:\coding\umji-vg101-project_for\headers\form.h
 	"hw8.h"
 	<vector>
+	<string>
 
 1437222687 source:f:\coding\umji-vg101-project_for\screen.cpp
 	"headers/hw8.h"
@@ -47,7 +49,7 @@
 	<cstring>
 	<iostream>
 
-1437292633 source:f:\coding\umji-vg101-project_for\src\control.cpp
+1437327305 source:f:\coding\umji-vg101-project_for\src\control.cpp
 	<windows.h>
 	"../headers/hw8.h"
 	<cstring>
@@ -59,7 +61,7 @@
 	<cstring>
 	<iostream>
 
-1437294059 source:f:\coding\umji-vg101-project_for\src\main.cpp
+1437298822 source:f:\coding\umji-vg101-project_for\src\main.cpp
 	<windows.h>
 	<cstdio>
 	<cstdlib>
@@ -78,7 +80,7 @@
 	"form.h"
 	<string>
 
-1437295780 source:f:\coding\umji-vg101-project_for\src\screen.cpp
+1437326569 source:f:\coding\umji-vg101-project_for\src\screen.cpp
 	"../headers/hw8.h"
 	<cstring>
 	<iostream>
@@ -86,8 +88,52 @@
 1437295377 source:f:\coding\umji-vg101-project_for\src\ui_controls.cpp
 	"../headers/hw8.h"
 
-1437294059 source:f:\coding\umji-vg101-project_for\src\ui_properties.cpp
+1437327385 source:f:\coding\umji-vg101-project_for\src\ui_properties.cpp
 	"../headers/hw8.h"
 
-1437292753 f:\coding\umji-vg101-project_for\headers\uiproperty.h
+1437330373 f:\coding\umji-vg101-project_for\headers\uiproperty.h
+	"hw8.h"
+
+1437327305 source:f:\coding\umji-vg101-project_for\src_gui\control.cpp
+	<windows.h>
+	"../headers/hw8.h"
+	<cstring>
+	<iostream>
+
+1437331423 f:\coding\umji-vg101-project_for\headers\button.h
+	"form.h"
+	<string>
+
+1437331423 f:\coding\umji-vg101-project_for\headers\label.h
+	"form.h"
+	<string>
+
+1437295377 source:f:\coding\umji-vg101-project_for\src_gui\form_control.cpp
+	<windows.h>
+	"../headers/hw8.h"
+	<cstring>
+	<iostream>
+
+1437331072 source:f:\coding\umji-vg101-project_for\src_gui\main.cpp
+	<windows.h>
+	<cstdio>
+	<cstdlib>
+	<ctime>
+	<iostream>
+	<string.h>
+	"../headers/hw8.h"
+
+1437331322 source:f:\coding\umji-vg101-project_for\src_gui\screen.cpp
+	"../headers/hw8.h"
+	<cstring>
+	<iostream>
+
+1437330388 source:f:\coding\umji-vg101-project_for\src_gui\ui_properties.cpp
+	"../headers/hw8.h"
+
+1437327478 source:f:\coding\umji-vg101-project_for\src_gui\uibutton.cpp
+	"../headers/hw8.h"
+
+1437331226 source:f:\coding\umji-vg101-project_for\src_gui\label.cpp
+	"../headers/hw8.h"
 

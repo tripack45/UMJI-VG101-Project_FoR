@@ -35,7 +35,7 @@ void cControl::DrawRectangle(COORD u,COORD v){//v>u required
     static const CHAR_INFO rdchar={'D',7};
     static const CHAR_INFO hchar={'|',7};
     static const CHAR_INFO vchar={'=',7};
-    COORD dwsize=getDrawSize();
+    COORD dwsize=getControlSize();
     #define BUF(x,y) *(cbuffer + y * dwsize.X + x )
     for(int i=u.X;i<=v.X;i++){
         BUF(i   , u.Y)=vchar;
@@ -48,4 +48,21 @@ void cControl::DrawRectangle(COORD u,COORD v){//v>u required
     BUF(u.X,u.Y)=luchar;   BUF(v.X,u.Y)=ruchar;
     BUF(u.X,v.Y)=ldchar;   BUF(v.X,v.Y)=rdchar;
     #undef BUF
+}
+
+void cControl::PutString(COORD pos,std::string* str,int len){
+    COORD csize=getControlSize();
+    CHAR_INFO char_blank={' ',0};
+    for(int i=0;i<len;i++){
+        *(cbuffer+ pos.Y * csize.X + pos.X + i)=char_blank;
+    }
+    if(str==0)return;
+    for(int i=0;i<len;i++){
+        if( (*str)[i]!='\0'){
+            CHAR_INFO tchar={(*str)[i],7};
+            *(cbuffer+ pos.Y * csize.X + pos.X + i)=tchar;
+        }else{
+            return;
+        }
+    }
 }

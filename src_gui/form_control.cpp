@@ -35,7 +35,7 @@ void cForm::Draw(){
         //iterate through all controls
         controls[i]->Draw();
         CHAR_INFO* cbuffer=controls[i]->getBuffer();
-        COORD csize=controls[i]->getDrawSize();
+        COORD csize=controls[i]->getControlSize();
         COORD cpos=controls[i]->getControlPos();
         for(int i=0;i<csize.Y;i++)
             memcpy(fbuffer + (cpos.Y+i) * FormSize.X + cpos.X,
@@ -60,7 +60,7 @@ cForm::~cForm(){
 int cForm::getRecieverIndex(COORD mpos){
     for(int i=controls.size()-1;i>=0;i--){
         COORD cpos=controls[i]->getControlPos();
-        COORD csize=controls[i]->getDrawSize();
+        COORD csize=controls[i]->getControlSize();
         if(mpos.X>=cpos.X && mpos.X<cpos.X+csize.X)
             if(mpos.Y>=cpos.Y && mpos.Y<cpos.Y+csize.Y)
                 return i;
