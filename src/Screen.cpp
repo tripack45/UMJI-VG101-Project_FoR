@@ -1,4 +1,4 @@
-#include "headers/hw8.h"
+#include "../headers/hw8.h"
 #include <cstring>
 #include <iostream>
 Screen::Screen(){
@@ -8,8 +8,8 @@ Screen::Screen(){
 	HANDLE herr = GetStdHandle(STD_ERROR_HANDLE);
 	GetConsoleScreenBufferInfo(hout, &bInfo);
 	GetConsoleCursorInfo(hin,&cursorinfo);
-	cbuffer=new CHAR_INFO[bInfo.dwSize.X*bInfo.dwSize.Y];
-	memset(cbuffer,0,bInfo.dwSize.X * bInfo.dwSize.Y);
+	sbuffer=new CHAR_INFO[bInfo.dwSize.X*bInfo.dwSize.Y];
+	memset(sbuffer,0,bInfo.dwSize.X * bInfo.dwSize.Y);
 }
 
 void Screen::setCursorPos(short x,short y){
@@ -37,13 +37,13 @@ void Screen::Draw(){
     COORD fsize=(*pform).FormSize;
     COORD formpos=(*pform).FormPos;
     for(int i=0;i<fsize.Y;i++)
-        memcpy(cbuffer + (formpos.Y+i) * bInfo.dwSize.X + formpos.X,
+        memcpy(sbuffer + (formpos.Y+i) * bInfo.dwSize.X + formpos.X,
                 pformbuff + i * fsize.X,
                 fsize.X*sizeof(CHAR_INFO)
                 );
     SMALL_RECT ret={0,0,bInfo.dwSize.X,bInfo.dwSize.Y};
     COORD crhome={0,0};
-    if(!WriteConsoleOutput(hout,cbuffer,bInfo.dwSize,crhome,&ret));
+    if(!WriteConsoleOutput(hout,sbuffer,bInfo.dwSize,crhome,&ret));
 
 }
 
@@ -75,5 +75,5 @@ Screen::~Screen(){
     CloseHandle(hin);
     CloseHandle(hout);
     CloseHandle(herr);
-    delete cbuffer;
+    delete sbuffer;
 }

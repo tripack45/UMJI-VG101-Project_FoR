@@ -5,7 +5,8 @@
 #include <windows.h>
 #include "form.h"
 #include "screen.h"
-
+#include "uicontrols.h"
+#include "uiproperty.h"
 
 #endif // __HW8_H__
 

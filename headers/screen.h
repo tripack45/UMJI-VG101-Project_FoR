@@ -21,8 +21,9 @@ private:
     INPUT_RECORD mouseRec;
 	DWORD res;
 	COORD crPos, crHome;
-	CHAR_INFO* cbuffer;
 	CONSOLE_CURSOR_INFO cursorinfo;
+
+	CHAR_INFO* sbuffer;
 
 	cForm* pform;
 	void DispatchMouseInput();
