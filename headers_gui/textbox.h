@@ -1,11 +1,14 @@
-#ifndef __UILABLE_H__
-#define __UILABLE_H__
-#include "form.h"
-#include <string>
+#ifndef UMJI_VG101_PROJECT_FOR_TEXTBOX_H
+#define UMJI_VG101_PROJECT_FOR_TEXTBOX_H
+#include <windows.h>
+#include "form_control.h"
 
-class Label:public cControl{
+class TextBox:public cControl{
 public:
-    Label(COORD* lPOS,std::string* text_,void (*foo)(COORD)=0);
+    TextBox(COORD *lPOS,
+            COORD *csize_,
+            std::string *text_,
+            void (*foo)(COORD)=0);
     COORD getControlSize();
     void setDblClkHandler(void (*foo)(COORD));
     void setClkHandler(void (*foo)(COORD));
@@ -13,7 +16,8 @@ public:
     void OnClick(COORD);
     void Draw();
     void ChangeText(std::string*);
-    ~Label();
+    ~TextBox();
+
 private:
     std::string* text;
     void (*dblclickHandler)(COORD);
@@ -21,4 +25,4 @@ private:
     static const std::string empty_string;
     COORD csize;
 };
-#endif
+#endif //UMJI_VG101_PROJECT_FOR_TEXTBOX_H

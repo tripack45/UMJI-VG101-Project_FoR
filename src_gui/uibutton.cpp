@@ -1,15 +1,15 @@
-#include "../headers/hw8.h"
+#include "../headers_gui/hw8_gui.h"
 //===============BUTTON======================
 const int Button::TxtMaxLength=5;
 const int Button::TxtMaxLine=1;
 
 Button::Button(COORD* bPOS,std::string* text_,void (*foo)(COORD))
     :cControl(bPOS){
-    cbuffer=new CHAR_INFO[(2+TxtMaxLine)*(TxtMaxLength+2)];
-    memset(cbuffer,0,(TxtMaxLength+2) * (2+TxtMaxLine) * sizeof(CHAR_INFO));
+    COORD csize=getControlSize();
+    InitializeBuffer(csize.X*csize.Y);
     ChangeText(text_);
-    clickHandler=foo;
-    dblclickHandler=0;
+    setClkHandler(foo);
+    setDblClkHandler(0);
 }
 
 COORD Button::getControlSize(){
@@ -19,13 +19,8 @@ COORD Button::getControlSize(){
 }
 
 void Button::Draw(){
-    COORD dwsize=getControlSize();
-    DrawRectangle({0,0},{6,2});
-    PutString({1,1},text,5);
-}
-
-Button::~Button(){
-    delete cbuffer;
+    DrawRectangle( {0,0} , {6,2});
+    PutString({0,0}, text, 5 );
 }
 
 void Button::ChangeText(std::string* str){

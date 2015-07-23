@@ -1,7 +1,5 @@
 #include <windows.h>
-#include "../headers/hw8.h"
-#include <cstring>
-#include <iostream>
+#include "../headers_gui/hw8_gui.h"
 
 cForm::cForm(COORD fsize,COORD fpos){
     fbuffer=new CHAR_INFO[fsize.X * fsize.Y];
@@ -37,9 +35,9 @@ void cForm::Draw(){
         CHAR_INFO* cbuffer=controls[i]->getBuffer();
         COORD csize=controls[i]->getControlSize();
         COORD cpos=controls[i]->getControlPos();
-        for(int i=0;i<csize.Y;i++)
+        for(int j=0;j<csize.Y;j++)
             memcpy(fbuffer + (cpos.Y+i) * FormSize.X + cpos.X,
-                cbuffer + i * csize.X,
+                cbuffer + j * csize.X,
                 csize.X*sizeof(CHAR_INFO)
                 );
     }
@@ -54,7 +52,7 @@ void cForm::AddControl(cControl* ctl){
 }
 
 cForm::~cForm(){
-    delete fbuffer;
+    delete[] fbuffer;
 }
 
 int cForm::getRecieverIndex(COORD mpos){

@@ -1,6 +1,6 @@
 #ifndef UIPROPERTY_H_INCLUDED
 #define UIPROPERTY_H_INCLUDED
-#include "hw8.h"
+#include "hw8_gui.h"
 class UI{
 public:
     static Screen* screen;

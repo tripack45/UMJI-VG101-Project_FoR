@@ -2,8 +2,7 @@
 #define __SCREEN_H__
 #include <windows.h>
 #include <set>
-#include "screen.h"
-#include "form.h"
+#include "form_control.h"
 
 class Screen{
 public:

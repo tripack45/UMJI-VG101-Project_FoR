@@ -1,11 +1,13 @@
-#ifndef __UICONTROLS_H__
-#define __UICONTROLS_H__
-#include "form.h"
+#ifndef __UILABLE_H__
+#define __UILABLE_H__
+#include "form_control.h"
 #include <string>
 
-class Button:public cControl{
+class Label:public cControl{
 public:
-    Button(COORD* bPOS,std::string* text_,void (*foo)(COORD)=0);
+    Label(COORD* lPOS,
+          std::string* text_,
+          void (*foo)(COORD)=0);
     COORD getControlSize();
     void setDblClkHandler(void (*foo)(COORD));
     void setClkHandler(void (*foo)(COORD));
@@ -13,12 +15,11 @@ public:
     void OnClick(COORD);
     void Draw();
     void ChangeText(std::string*);
-    ~Button();
 private:
     std::string* text;
     void (*dblclickHandler)(COORD);
     void (*clickHandler)(COORD);
-    static const int TxtMaxLength;
-    static const int TxtMaxLine;
+    static const std::string empty_string;
+    COORD csize;
 };
 #endif

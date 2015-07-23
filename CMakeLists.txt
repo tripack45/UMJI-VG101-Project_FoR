@@ -8,16 +8,17 @@ set(SOURCE_FILES
     src_gui/form_control.cpp
     src_gui/label.cpp
     main.cpp
-    src_gui/Screen.cpp
-    src_gui/ui_properties.cpp
-    src_gui/uibutton.cpp)
+    src_gui/screen.cpp
+    src_gui/uiproperty.cpp
+    src_gui/uibutton.cpp
+    src_gui/textbox.cpp)
 
 add_executable(UMJI_VG101_Project_FoR ${SOURCE_FILES}
-                headers/button.h
-                headers/button_simple.h
-                headers/form.h
-                headers/header_file.h
-                headers/hw8.h
-                headers/label.h
-                headers/screen.h
-                headers/uiproperty.h)
+                headers_gui/button.h
+                headers_gui/form_control.h
+                headers_gui/hw8_gui.h
+                headers_gui/label.h
+                headers_gui/screen.h
+                headers_gui/uiproperty.h
+                headers_gui/textbox.h
+                src_school/Course.cpp src_school/Course.h src_school/Person.cpp src_school/Person.h src_school/College.cpp src_school/College.h src_school/Schedule.cpp src_school/Schedule.h src_school/Building.cpp src_school/Building.h src_school/hw8_college.h src_school/Room.cpp src_school/Room.h src_school/globaldef.h src_school/Session.cpp src_school/Session.h src_school/Teacher.cpp src_school/Teacher.h src_school/Student.cpp src_school/Student.h)

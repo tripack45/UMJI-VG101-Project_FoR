@@ -1,20 +1,25 @@
 #include <windows.h>
 #include <iostream>
-#include "headers/hw8.h"
+#include <fstream>
+#include "../headers_gui/hw8_gui.h"
 
 void foo(COORD mpos);
 void foo2(COORD mpos);
+
 int main(void)
 {
+    std::ofstream ferr("err.log");
+    std::streambuf * OldBuf = std::cout.rdbuf( ferr.rdbuf() );
+    //Redirecting standard error
     Screen screen;
     cForm form(screen.getScreenSize(),{0,0});
     screen.setForm(&form);
     screen.setCursorVisibility(false);
     Button button1(&UI::button1_pos,&UI::button1_text,foo);
-    Button button2(&UI::button2_pos,&UI::button2_text,foo2);
+    //Button button2(&UI::button2_pos,&UI::button2_text,foo2);
     Label label1(&UI::Label1_pos,&UI::Label1_text);
     form.AddControl(&button1);
-    form.AddControl(&button2);
+    //form.AddControl(&button2);
     form.AddControl(&label1);
     while(1){
         screen.Update();
@@ -28,7 +33,7 @@ void foo(COORD mpos){
     UI::Label1_pos.Y+=1;
 }
 
-void foo2(COORD mpos){
+void foo2(COORD mpos) {
     UI::Label1_text+="Q";
 }
 

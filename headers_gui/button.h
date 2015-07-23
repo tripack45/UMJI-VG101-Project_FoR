@@ -1,7 +1,7 @@
 #ifndef __UIBUTTON_H__
 #define __UIBUTTON_H__
-#include "form.h"
 #include <string>
+#include "form_control.h"
 
 class Button:public cControl{
 public:
@@ -13,7 +13,6 @@ public:
     void OnClick(COORD);
     void Draw();
     void ChangeText(std::string*);
-    ~Button();
 private:
     std::string* text;
     void (*dblclickHandler)(COORD);

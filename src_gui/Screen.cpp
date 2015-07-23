@@ -1,6 +1,5 @@
-#include "../headers/hw8.h"
-#include <cstring>
-#include <iostream>
+#include "../headers_gui/hw8_gui.h"
+
 Screen::Screen(){
     hout = GetStdHandle(STD_OUTPUT_HANDLE);
 	hin = GetStdHandle(STD_INPUT_HANDLE);
@@ -45,7 +44,7 @@ void Screen::Draw(){
                 );
     SMALL_RECT ret={0,0,bInfo.dwSize.X,bInfo.dwSize.Y};
     COORD crhome={0,0};
-    if(!WriteConsoleOutput(hout,sbuffer,bInfo.dwSize,crhome,&ret));
+    WriteConsoleOutput(hout,sbuffer,bInfo.dwSize,crhome,&ret);
 
 }
 
@@ -62,7 +61,8 @@ void Screen::DispatchMouseInput(){
                 return;
             }
             //if(mouseRec.Event.MouseEvent.dwEventFlags != )
-            if(mouseRec.Event.MouseEvent.dwEventFlags != MOUSE_MOVED)(*pform).OnClick(crPos);
+            if(mouseRec.Event.MouseEvent.dwEventFlags != MOUSE_MOVED)
+                (*pform).OnClick(crPos);
             //FlushConsoleInputBuffer(hin);
         }
         /*
@@ -82,5 +82,5 @@ Screen::~Screen(){
     CloseHandle(hin);
     CloseHandle(hout);
     CloseHandle(herr);
-    delete sbuffer;
+    delete[] sbuffer;
 }

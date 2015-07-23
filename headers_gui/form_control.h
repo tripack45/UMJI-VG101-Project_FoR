@@ -1,8 +1,8 @@
 #ifndef __FORM_H__
 #define __FORM_H__
-#include "hw8.h"
 #include <vector>
 #include <string>
+
 class cControl{
 public:
     cControl(COORD* cpos);
@@ -18,6 +18,8 @@ public:
 protected:
     COORD* controlpos;
     CHAR_INFO* cbuffer;
+
+    void InitializeBuffer(int);
 
     void DrawRectangle(COORD,COORD);
     void PutString(COORD pos,std::string* str=0,int len=1);

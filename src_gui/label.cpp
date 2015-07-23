@@ -1,17 +1,14 @@
-#include "../headers/hw8.h"
+#include "../headers_gui/hw8_gui.h"
 
 const std::string Label::empty_string=" ";
 Label::Label(COORD* bPOS,std::string* text_,void (*foo)(COORD))
     :cControl(bPOS){
-    cbuffer=0;//IMPORTANT! Makesure proper allocation;
     ChangeText(text_);
-    clickHandler=foo;
-    dblclickHandler=0;
-
+    setClkHandler(foo);
+    setDblClkHandler(0);
 }
 
 COORD Label::getControlSize(){
-                //====X========,=======Y=====
     COORD bSize=csize;
     return bSize;
 }
@@ -21,21 +18,13 @@ void Label::Draw(){
     PutString({0,0},text,text->size());
 }
 
-Label::~Label(){
-    delete cbuffer;
-}
-
 void Label::ChangeText(std::string* str){
-    if(str==0){
-        text=(std::string*)&Label::empty_string;
-    }else{
-        text=str;
-    }
-    int strlen=str->size();
-    csize={strlen,1};
+    text= str==0 ? (std::string*)&Label::empty_string : str;
+    int textlen=text->size();
+    csize={textlen,1};
     if(cbuffer!=0)delete cbuffer;
-    cbuffer=new CHAR_INFO[strlen];
-    memset(cbuffer,strlen,sizeof(CHAR_INFO));
+    cbuffer=new CHAR_INFO[textlen];
+    memset(cbuffer,textlen,sizeof(CHAR_INFO));
     return;
 };
 

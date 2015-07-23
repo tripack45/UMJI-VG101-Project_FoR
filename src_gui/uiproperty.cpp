@@ -1,10 +1,10 @@
-#include "../headers/hw8.h"
+#include "../headers_gui/hw8_gui.h"
 
 Screen* UI::screen=0;
 cForm* UI::current_form=0;
 COORD UI::button1_pos={5,3};
-std::string UI::button1_text("µãÎÒ");
+std::string UI::button1_text("ï¿½ï¿½ï¿½ï¿½");
 COORD UI::button2_pos={9,6};
-std::string UI::button2_text("µãÎÒ");
+std::string UI::button2_text("ï¿½ï¿½ï¿½ï¿½");
 COORD UI::Label1_pos={2,2};
 std::string UI::Label1_text("Test");

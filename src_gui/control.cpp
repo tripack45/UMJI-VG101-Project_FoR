@@ -1,10 +1,11 @@
 #include <windows.h>
-#include "../headers/hw8.h"
+#include "../headers_gui/hw8_gui.h"
 #include <cstring>
 #include <iostream>
 
 cControl::cControl(COORD* cpos){
     controlpos=cpos;
+    cbuffer=0;//IMPORTANT! Makesure proper deallocation;
 }
 
 CHAR_INFO* cControl::getBuffer(){
@@ -25,16 +26,16 @@ void cControl::movePosition(COORD vec){
 }
 
 cControl::~cControl(){
-    delete cbuffer;
+    delete[] cbuffer;
 }
 
 void cControl::DrawRectangle(COORD u,COORD v){//v>u required
-    static const CHAR_INFO luchar={'A',7};
-    static const CHAR_INFO ruchar={'B',7};
-    static const CHAR_INFO ldchar={'C',7};
-    static const CHAR_INFO rdchar={'D',7};
-    static const CHAR_INFO hchar={'|',7};
-    static const CHAR_INFO vchar={'=',7};
+    static const CHAR_INFO luchar = {{'A'}, 7};
+    static const CHAR_INFO ruchar = {{'B'}, 7};
+    static const CHAR_INFO ldchar = {{'C'}, 7};
+    static const CHAR_INFO rdchar = {{'D'}, 7};
+    static const CHAR_INFO hchar = {{'|'}, 7};
+    static const CHAR_INFO vchar = {{'='}, 7};
     COORD dwsize=getControlSize();
     #define BUF(x,y) *(cbuffer + y * dwsize.X + x )
     for(int i=u.X;i<=v.X;i++){
@@ -52,17 +53,23 @@ void cControl::DrawRectangle(COORD u,COORD v){//v>u required
 
 void cControl::PutString(COORD pos,std::string* str,int len){
     COORD csize=getControlSize();
-    CHAR_INFO char_blank={' ',0};
+    CHAR_INFO char_blank={{' '},0};
     for(int i=0;i<len;i++){
         *(cbuffer+ pos.Y * csize.X + pos.X + i)=char_blank;
     }
     if(str==0)return;
     for(int i=0;i<len;i++){
         if( (*str)[i]!='\0'){
-            CHAR_INFO tchar={(*str)[i],7};
+            CHAR_INFO tchar={ {(*str)[i]} ,7};
             *(cbuffer+ pos.Y * csize.X + pos.X + i)=tchar;
         }else{
             return;
         }
     }
+}
+
+void cControl::InitializeBuffer(int i) {
+    delete cbuffer;
+    cbuffer=new CHAR_INFO[i];
+    memset(cbuffer,i,sizeof(CHAR_INFO));
 }
