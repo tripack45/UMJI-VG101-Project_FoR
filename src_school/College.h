@@ -9,43 +9,54 @@
 #include <vector>
 #include <list>
 #include "globaldef.h"
-#include "Building.h"
-#include "Session.h"
-#include "Schedule.h"
-#include "Teacher.h"
+#include "Database.h"
 
 class College {
 public:
     std::string getName();
     void setName(std::string& strname);
-    void AddBuilding(Building*);
-    void AddFaculty(Teacher*);
-    void AddCourse(Course*);
+    //===========Resourses Management========
+    void AddRoom   (char building_,
+                    int floor_,
+                    int room_num_,
+                    int capacity_,
+                    RoomType rtype_=Normal,
+                    Expertise exp_=General
+                    );
+    void AddTeacher (std::string& name,
+                     Expertise exp
+                    );
+    void AddStudent (std::string& name
+                    );
+    void AddCourse (char* name_,
+                    Expertise expertise_,
+                    int section_num_,
+                    char* course_code_=NULL,
+                    int capacity_=15,
+                    RoomType reqire_room_=Normal
+                    );
+    //======================================
 
-    Session getCourseArrangements(CourseIndex);
-    Schedule getSessionArrangement(SessionIndex);
-    Schedule getFacultySchedule(PersonnelID);
-    Schedule getStudentSchedule(PersonnelID);
 
     void ListFaculty();
     void ListStudent();
     void ListCourses();
 
 private:
-    typedef struct{
-        Course* course;
-        CourseIndex index;
-    }CourseReg;
-    typedef struct{
-        Person* person;
-        PersonnelID id;
-    }PersonnelReg;
+    Section* getSectionPtr(SectionIndex);
+    Person* getPersonPtr(PersonnelID);
+    Room* getRoomPtr(RoomName);
+
     std::string name;
-    std::list<Building*> building;
-    std::list<CourseReg*> course;
-    std::list<PersonnelReg*> teacher;
-    std::list<PersonnelReg*> student;
-    std::list<Session*> session;
+
+    DataEntries<Teacher> teacher;
+    DataEntries<Student> student;
+    DataEntries<Course> course;
+    DataEntries<Section> section;
+
+PersonnelID GeneratePersonnelID();
+CourseIndex GenerateCourseIndex();
+SectionIndex GenerateSectionID();
 };
 
 

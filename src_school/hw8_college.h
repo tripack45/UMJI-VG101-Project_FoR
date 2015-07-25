@@ -6,11 +6,7 @@
 #define UMJI_VG101_PROJECT_FOR_HW8_COLLEGE_H
 
 #include "globaldef.h"
-#include "Building.h"
 #include "College.h"
-#include "Course.h"
-#include "Person.h"
-#include "Schedule.h"
-#include "Room.h"
+#include "Database.h"
 
 #endif //UMJI_VG101_PROJECT_FOR_HW8_COLLEGE_H
